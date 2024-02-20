@@ -11,6 +11,53 @@
         "page_width": "xs"
       }
     },
+    "rich_text3_0_L7Wyqg": {
+      "type": "rich-text3_0",
+      "blocks": {
+        "subheading_tXhpHF": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_JrGUrD": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_eRrXnY": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Always visible content here<\/p>",
+            "content-expand": "<p>expandable content here<\/p>"
+          }
+        },
+        "image_3hkA9E": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Kopie_von_onomao-Lissabon-Tag-2-524_1_78b1af2a-1fbd-47d1-b579-3c090cb6c698.jpg",
+            "width_mode": "custom",
+            "image_alignment": "right",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        }
+      },
+      "block_order": [
+        "subheading_tXhpHF",
+        "heading_JrGUrD",
+        "richtext_eRrXnY",
+        "image_3hkA9E"
+      ],
+      "settings": {
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
     "rich_text_2_0_tqcaaA": {
       "type": "rich-text-2_0",
       "blocks": {
@@ -537,6 +584,7 @@
   },
   "order": [
     "main",
+    "rich_text3_0_L7Wyqg",
     "rich_text_2_0_tqcaaA",
     "rich_text_2_0_c9LLY7",
     "image_text_layout_fddTQe",
