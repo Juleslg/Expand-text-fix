@@ -1,6 +1,6 @@
 {%- if section.blocks.size > 0 -%}
 <div class="{% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
-  <div class="container container--{{ section.settings.content_width }} flex-container">
+  <div class="container container--{{ section.settings.content_width }} ">
  
   <div class="prose text-{{ section.settings.text_position }}">
       {%- assign is_inside_button_group_context = false -%}
@@ -175,13 +175,6 @@ padding-top: 20px;
       flex-basis: 100%;
       order: unset;
     }
-
-    .container.flex-container {
-  display: flex;
-  flex-wrap: wrap; /* Optional, if you want to allow wrapping */
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Space between text and image */
-}
   }
 </style>
 
