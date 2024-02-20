@@ -153,6 +153,16 @@ padding-top: 20px;
 
 }
 
+.side-by-side-container {
+  display: flex;
+  align-items: center; /* Adjust based on your design needs */
+}
+
+.side-by-side-container .text-content,
+.side-by-side-container .media-content {
+  flex: 1; /* Adjust the flex basis as needed to control width */
+}
+
 
 </style>
 
@@ -364,8 +374,8 @@ padding-top: 20px;
 
       {
   "type": "select",
-  "id": "image_alignment",
-  "label": "Image alignment",
+  "id": "media_alignment",
+  "label": "Media Alignment",
   "options": [
     {
       "value": "left",
