@@ -45,8 +45,9 @@
               {%- endif -%}
 
             {%- when 'image' -%}
-            <div {{ block.shopify_attributes }} class="{% if block.settings.block_position == 'left' %}block-left{% elsif block.settings.block_position == 'right' %}block-right{% endif %}">
-                <div {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {%- if block.settings.image != blank -%}
+              <div {{ block.shopify_attributes }} class="{% if block.settings.block_position == 'left' %}block-left{% elsif block.settings.block_position == 'right' %}block-right{% endif %}">
                   {%- capture image_style_attribute -%}{% if section.settings.text_position == 'center' %}margin-inline: auto;{% elsif section.settings.text_position == 'end' %}margin-inline-start: auto;{% endif %}{%- endcapture -%}
                   {%- if block.settings.width_mode == 'custom' -%}
                     {%- capture image_style_attribute -%}{{ image_style_attribute }} --image-max-width: {{ block.settings.max_width }}px; --image-mobile-max-width: {{ block.settings.mobile_max_width }}px{%- endcapture -%}
