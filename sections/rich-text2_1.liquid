@@ -14,6 +14,9 @@
         {%- endif -%}
 
         {%- case block.type -%}
+
+          <div class="content">
+
           {%- when 'subheading' -%}
             {%- if block.settings.text != blank -%}
               <p class="h6" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
@@ -44,6 +47,24 @@
               </div>
             {%- endif -%}
 
+            {%- when 'link' -%}
+            <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} class="link" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</a>
+
+          {%- when 'button' -%}
+            {%- if block.settings.text != blank -%}
+              {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
+            {%- endif -%}
+
+          {%- when 'liquid' -%}
+            {%- if block.settings.liquid != blank -%}
+              <div {{ block.shopify_attributes }}>
+                {{- block.settings.liquid -}}
+              </div>
+            {%- endif -%}
+
+            </div>
+            <div class="media">
+
           {%- when 'image' -%}
             {%- if block.settings.image != blank -%}
               <div {{ block.shopify_attributes }}>
@@ -68,21 +89,9 @@
                 {%- render 'media', media: block.settings.video, controls: true -%}
               </div>
             {%- endif -%}
+            
+            </div>
           
-          {%- when 'link' -%}
-            <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} class="link" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</a>
-
-          {%- when 'button' -%}
-            {%- if block.settings.text != blank -%}
-              {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
-            {%- endif -%}
-
-          {%- when 'liquid' -%}
-            {%- if block.settings.liquid != blank -%}
-              <div {{ block.shopify_attributes }}>
-                {{- block.settings.liquid -}}
-              </div>
-            {%- endif -%}
         {%- endcase -%}
       {%- endfor -%}
     </div>
