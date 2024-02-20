@@ -11,44 +11,44 @@
         "page_width": "xs"
       }
     },
-    "rich_text2_1_tMirLB": {
+    "rich_text2_1_qh3tRP": {
       "type": "rich-text2_1",
       "blocks": {
-        "subheading_PJGihm": {
+        "subheading_iefXVQ": {
           "type": "subheading",
           "settings": {
             "text": "Subheading"
           }
         },
-        "heading_RVQEcM": {
+        "heading_dPBnhe": {
           "type": "heading",
           "settings": {
             "text": "Heading",
             "heading_tag": "h1"
           }
         },
-        "richtext_7YbXLH": {
+        "richtext_BzxqrC": {
           "type": "richtext",
           "settings": {
             "content": "<p>Always visible content here<\/p>",
             "content-expand": "<p>expandable content here<\/p>"
           }
         },
-        "image_E6XC7F": {
+        "image_iP8wQJ": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ENG_mobile_final.png",
+            "image": "shopify:\/\/shop_images\/C-02-SET-DINE-LBLUE-003-03-web_c425a5a7-8135-4658-a250-3b81aedaf761.jpg",
             "width_mode": "custom",
-            "max_width": 240,
-            "mobile_max_width": 230
+            "max_width": 600,
+            "mobile_max_width": 400
           }
         }
       },
       "block_order": [
-        "subheading_PJGihm",
-        "heading_RVQEcM",
-        "richtext_7YbXLH",
-        "image_E6XC7F"
+        "subheading_iefXVQ",
+        "heading_dPBnhe",
+        "richtext_BzxqrC",
+        "image_iP8wQJ"
       ],
       "settings": {
         "separate_section_with_border": true,
@@ -583,7 +583,7 @@
   },
   "order": [
     "main",
-    "rich_text2_1_tMirLB",
+    "rich_text2_1_qh3tRP",
     "rich_text_2_0_tqcaaA",
     "rich_text_2_0_c9LLY7",
     "image_text_layout_fddTQe",
