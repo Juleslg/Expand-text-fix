@@ -354,6 +354,13 @@ padding-top: 20px;
     "name": "t:sections.rich_text.blocks.image.name",
     "settings": [
       {
+    "type": "image_picker",
+    "id": "section_image",
+    "label": "Section Image",
+    "info": "Upload an image for this section."
+  },
+
+      {
         "type": "image_picker",
         "id": "image",
         "label": "t:global.image.image",
@@ -500,7 +507,18 @@ padding-top: 20px;
       },
       {
         "type": "richtext"
-      }
+      },
+      {
+          "type": "image",
+          "settings": {
+            "section_image": null, 
+            "image": null, 
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400,
+            "image_alignment": "right" 
+          }
+        }
     ]
   }
 ]
