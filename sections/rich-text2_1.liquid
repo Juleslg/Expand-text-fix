@@ -45,7 +45,7 @@
               {%- endif -%}
 
             {%- when 'image' -%}
-              {%- if block.settings.image != blank -%}
+            <div {{ block.shopify_attributes }} class="{% if block.settings.block_position == 'left' %}block-left{% elsif block.settings.block_position == 'right' %}block-right{% endif %}">
                 <div {{ block.shopify_attributes }}>
                   {%- capture image_style_attribute -%}{% if section.settings.text_position == 'center' %}margin-inline: auto;{% elsif section.settings.text_position == 'end' %}margin-inline-start: auto;{% endif %}{%- endcapture -%}
                   {%- if block.settings.width_mode == 'custom' -%}
@@ -157,6 +157,25 @@
   .padding-top-expand {
     padding-top: 20px;
   }
+
+  .block-left {
+  float: left;
+  margin-right: 20px; /* Adjust spacing as needed */
+}
+
+.block-right {
+  float: right;
+  margin-left: 20px; /* Adjust spacing as needed */
+}
+
+@media (max-width: 768px) {
+  .block-left, .block-right {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
 </style>
 
 {% schema %}
@@ -168,6 +187,27 @@
       "groups": ["header", "custom.overlay"]
     },
     "settings": [
+
+    {
+  "type": "select",
+  "id": "block_position",
+  "label": "Block Position",
+  "options": [
+    {
+      "value": "default",
+      "label": "Default"
+    },
+    {
+      "value": "left",
+      "label": "Left"
+    },
+    {
+      "value": "right",
+      "label": "Right"
+    }
+  ],
+  "default": "default"
+}
       {
         "type": "checkbox",
         "id": "separate_section_with_border",
