@@ -45,12 +45,6 @@
               </div>
             {%- endif -%}
             
-            
-
-          
-
-          
-          
           {%- when 'link' -%}
             <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} class="link" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</a>
 
@@ -307,7 +301,6 @@ padding-top: 20px;
         "info": "if this field is empty, the button will be hidden",
         "default": "<p>expandable content here</p>"
       }
-
     ]
   },
   {
@@ -339,75 +332,69 @@ padding-top: 20px;
     ]
   },
   {
-  "type": "image",
-  "name": "t:sections.rich_text.blocks.image.name",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "section_image",
-      "label": "Section Image",
-      "info": "Upload an image for this section."
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "t:global.image.image",
-      "info": "t:sections.rich_text.blocks.image.image_size_recommendation"
-    },
-    {
-      "type": "radio",
-      "id": "width_mode",
-      "label": "t:global.image.width",
-      "options": [
-        {
-          "value": "full_width",
-          "label": "t:global.image.width_options.full_width"
-        },
-        {
-          "value": "custom",
-          "label": "t:global.image.width_options.custom"
-        }
-      ],
-      "default": "custom"
-    },
-    {
-      "type": "select",
-      "id": "media_alignment",
-      "label": "Media Alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "right"
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "min": 100,
-      "max": 1000,
-      "step": 10,
-      "unit": "px",
-      "label": "t:global.image.maximum_width",
-      "default": 600
-    },
-    {
-      "type": "range",
-      "id": "mobile_max_width",
-      "min": 100,
-      "max": 600,
-      "step": 10,
-      "unit": "px",
-      "label": "t:global.image.mobile_maximum_width",
-      "default": 400
-    }
-  ]
-},
+    "type": "image",
+    "name": "t:sections.rich_text.blocks.image.name",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "t:global.image.image",
+        "info": "t:sections.rich_text.blocks.image.image_size_recommendation"
+      },
+      {
+        "type": "radio",
+        "id": "width_mode",
+        "label": "t:global.image.width",
+        "options": [
+          {
+            "value": "full_width",
+            "label": "t:global.image.width_options.full_width"
+          },
+          {
+            "value": "custom",
+            "label": "t:global.image.width_options.custom"
+          }
+        ],
+        "default": "custom"
+      },
+      {
+        "type": "select",
+        "id": "media_alignment",
+        "label": "Media Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "range",
+        "id": "max_width",
+        "min": 100,
+        "max": 1000,
+        "step": 10,
+        "unit": "px",
+        "label": "t:global.image.maximum_width",
+        "default": 600
+      },
+      {
+        "type": "range",
+        "id": "mobile_max_width",
+        "min": 100,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "t:global.image.mobile_maximum_width",
+        "default": 400
+      }
+    ]
+  },
   {
     "type": "video",
     "name": "t:sections.rich_text.blocks.video.name",
@@ -496,15 +483,14 @@ padding-top: 20px;
         "type": "richtext"
       },
       {
-          "type": "image",
-          "settings": { 
-            "image": null, 
-            "width_mode": "custom",
-            "max_width": 600,
-            "mobile_max_width": 400,
-            
-          }
+        "type": "image",
+        "settings": { 
+          "image": null, 
+          "width_mode": "custom",
+          "max_width": 600,
+          "mobile_max_width": 400
         }
+      }
     ]
   }
 ]
