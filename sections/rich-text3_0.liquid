@@ -148,34 +148,7 @@ padding-top: 20px;
 
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .flex-container .image-block {
-    flex: 1;
-    order: 2; /* Default to right */
-  }
-  .flex-container .text-block {
-    flex: 1;
-    order: 1;
-  }
-  .flex-container.left .image-block {
-    order: 1;
-  }
-  .flex-container.left .text-block {
-    order: 2;
-  }
-  /* Ensure the image and text stack on smaller screens */
-  @media (max-width: 768px) {
-    .flex-container .image-block,
-    .flex-container .text-block {
-      flex-basis: 100%;
-      order: unset;
-    }
-  }
+
 </style>
 
 {% schema %}
