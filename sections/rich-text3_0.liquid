@@ -46,7 +46,7 @@
 
           {%- when 'image' -%}
             {%- if block.settings.image != blank -%}
-              <div class="flex-container {{ section.settings.image_position }}" {{ block.shopify_attributes }}>
+              <div class="flex-container {{ block.settings.image_alignment }}" {{ block.shopify_attributes }}>
                 {%- capture image_style_attribute -%}{% if section.settings.text_position == 'center' %}margin-inline: auto;{% elsif section.settings.text_position == 'end' %}margin-inline-start: auto;{% endif %}{%- endcapture -%}
 
                 {%- if block.settings.width_mode == 'custom' -%}
@@ -510,8 +510,7 @@ padding-top: 20px;
       },
       {
           "type": "image",
-          "settings": {
-            "section_image": null, 
+          "settings": { 
             "image": null, 
             "width_mode": "custom",
             "max_width": 600,
