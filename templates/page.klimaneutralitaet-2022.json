@@ -1,41 +1,5 @@
 {
   "sections": {
-    "rich_text_2_0_KY9m4D": {
-      "type": "rich-text-2_0",
-      "blocks": {
-        "subheading_RF6xzR": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_fKQ8nM": {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h1"
-          }
-        },
-        "richtext_ymMaQg": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Always visible content here<\/p>",
-            "content-expand": "<p>expandable content here<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_RF6xzR",
-        "heading_fKQ8nM",
-        "richtext_ymMaQg"
-      ],
-      "settings": {
-        "separate_section_with_border": true,
-        "content_width": "sm",
-        "text_position": "center",
-        "remove_vertical_spacing": false
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -572,7 +536,6 @@
     }
   },
   "order": [
-    "rich_text_2_0_KY9m4D",
     "main",
     "rich_text_2_0_tqcaaA",
     "rich_text_2_0_c9LLY7",
