@@ -11,34 +11,44 @@
         "page_width": "xs"
       }
     },
-    "rich_text2_1_WgpKpc": {
+    "rich_text2_1_eMmRjU": {
       "type": "rich-text2_1",
       "blocks": {
-        "subheading_XVQhEx": {
+        "subheading_4QPc4y": {
           "type": "subheading",
           "settings": {
             "text": "Subheading"
           }
         },
-        "heading_9ihjQx": {
+        "heading_w4tQHG": {
           "type": "heading",
           "settings": {
             "text": "Heading",
             "heading_tag": "h1"
           }
         },
-        "richtext_TPfnxT": {
+        "richtext_mN6LnM": {
           "type": "richtext",
           "settings": {
             "content": "<p>Always visible content here<\/p>",
             "content-expand": "<p>expandable content here<\/p>"
           }
+        },
+        "image_hG9Vj7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/C-02-SET-DINE-LBLUE-003-03-web_c425a5a7-8135-4658-a250-3b81aedaf761.jpg",
+            "width_mode": "custom",
+            "max_width": 420,
+            "mobile_max_width": 230
+          }
         }
       },
       "block_order": [
-        "subheading_XVQhEx",
-        "heading_9ihjQx",
-        "richtext_TPfnxT"
+        "subheading_4QPc4y",
+        "heading_w4tQHG",
+        "richtext_mN6LnM",
+        "image_hG9Vj7"
       ],
       "settings": {
         "separate_section_with_border": true,
@@ -573,7 +583,7 @@
   },
   "order": [
     "main",
-    "rich_text2_1_WgpKpc",
+    "rich_text2_1_eMmRjU",
     "rich_text_2_0_tqcaaA",
     "rich_text_2_0_c9LLY7",
     "image_text_layout_fddTQe",
