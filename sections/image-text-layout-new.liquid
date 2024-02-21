@@ -84,13 +84,14 @@
                     {{- block.settings.content -}}
                   </div>
                   <div id="expandable-section">
-  <div id="expand-btn" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
-  <div id="content" style="display: none;">
-    <!-- Your long text/content goes here -->
-    <p>This is the content that was hidden but now is shown.</p>
-    <div id="hide-btn" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
+  <div id="expandable-section">
+    <div id="expand-btn" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
+    <div id="content" style="display: none;">
+      <!-- Use the customizable long text content here -->
+      <p>{{ section.settings.long_text_content | newline_to_br | escape }}</p>
+      <div id="hide-btn" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
+    </div>
   </div>
-</div>
                 {%- endif -%}
   
               {%- when 'page' -%}
@@ -167,6 +168,12 @@
       "id": "hide_text",
       "label": "Hide Button Text",
       "default": "Hide"
+    },
+    {
+      "type": "textarea",
+      "id": "long_text_content",
+      "label": "Long Text Content",
+      "default": "This is the content that was hidden but now is shown."
     },
       {
         "type": "checkbox",
