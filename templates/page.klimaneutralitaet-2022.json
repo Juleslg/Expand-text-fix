@@ -44,6 +44,8 @@
         "hide_text": "Hide",
         "long_text_content": "Yolo",
         "separate_section_with_border": true,
+        "image": "shopify:\/\/shop_images\/Kopie_von_onomao-Lissabon-Tag-2-524_1_78b1af2a-1fbd-47d1-b579-3c090cb6c698.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Kopie_von_onomao-Lissabon-Tag-2-524_1_78b1af2a-1fbd-47d1-b579-3c090cb6c698.jpg",
         "reveal_on_scroll": true,
         "image_position": "image-with-text",
         "text_agline": "left",
