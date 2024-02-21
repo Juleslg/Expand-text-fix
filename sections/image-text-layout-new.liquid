@@ -96,7 +96,7 @@
                   </div>
                   <div id="expandable-section">
   <div id="expand-btn" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
-  <div id="content" class="transition-container" style="display: none;">
+  <div id="content" class="transition-container">
     <!-- Your long text/content goes here -->
     <p>This is the content that was hidden but now is shown.</p>
     <div id="hide-btn" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
@@ -144,19 +144,21 @@
   var content = document.getElementById('content');
 
   expandBtn.addEventListener('click', function() {
-    // Simply add 'expanded' class to show content
+    // Remove inline 'display: none;' if it exists
+    content.style.display = '';
     content.classList.add('expanded');
     expandBtn.style.display = 'none';
     hideBtn.style.display = 'block';
   });
 
   hideBtn.addEventListener('click', function() {
-    // Remove 'expanded' class to hide content
+    // Set 'max-height' to '0', no need to change 'display' property
     content.classList.remove('expanded');
     hideBtn.style.display = 'none';
     expandBtn.style.display = 'block';
   });
 });
+
 </script>
   
   {% schema %}
