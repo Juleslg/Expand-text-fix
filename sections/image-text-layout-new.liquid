@@ -107,11 +107,11 @@
                     {{- block.settings.content -}}
                   </div>
                   <div id="expandable-section">
-  <div id="expand-btn" class="button-transition" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
+  <div id="expand-btn" class="button-visible" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
   <div id="content" class="transition-container">
     <!-- Your long text/content goes here -->
     <p>This is the content that was hidden but now is shown.</p>
-    <div id="hide-btn" class="button-transition" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
+    <div id="hide-btn" class="button-transition" style="cursor: pointer">{{ section.settings.hide_text | escape }}</div>
   </div>
 </div>
                 {%- endif -%}
@@ -150,29 +150,32 @@
   {%- endif -%}
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var expandBtn = document.getElementById('expand-btn');
   var hideBtn = document.getElementById('hide-btn');
   var content = document.getElementById('content');
 
   expandBtn.addEventListener('click', function() {
     content.classList.add('expanded');
-    expandBtn.classList.add('button-transition');
     expandBtn.classList.remove('button-visible');
     setTimeout(function() {
+      expandBtn.classList.add('button-transition');
       hideBtn.classList.add('button-visible');
-    }, 500); // This timeout should match the transition duration
+      hideBtn.style.display = 'block'; // Ensure it's displayed for visibility
+    }, 0); // Immediately start the transition
   });
 
   hideBtn.addEventListener('click', function() {
     content.classList.remove('expanded');
     hideBtn.classList.remove('button-visible');
     setTimeout(function() {
-      expandBtn.classList.remove('button-transition');
+      hideBtn.classList.add('button-transition');
       expandBtn.classList.add('button-visible');
-    }, 500); // This timeout should match the transition duration
+      hideBtn.style.display = 'none'; // Hide it after transition
+    }, 500); // This timeout should match the opacity transition duration
   });
 });
+
 
 
 </script>
