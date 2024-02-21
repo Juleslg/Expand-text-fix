@@ -31,6 +31,18 @@
       padding-left: {{section.settings.padding_sides_mobile}}px; /* Adjust mobile left padding */
       padding-right: {{section.settings.padding_sides_mobile}}px; /* Adjust mobile right padding */
     }
+
+    .transition-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out; /* Adjust timing as needed */
+}
+
+/* Class that gets added when the section is expanded */
+.expanded {
+  max-height: 1000px; /* Set to a value that will accommodate the content size or use 'none' */
+  transition: max-height 0.5s ease-in; /* Adjust timing as needed */
+}
   }
   
     </style>
@@ -128,22 +140,22 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var expandBtn = document.getElementById('expand-btn');
-    var hideBtn = document.getElementById('hide-btn');
-    var content = document.getElementById('content');
+  var expandBtn = document.getElementById('expand-btn');
+  var hideBtn = document.getElementById('hide-btn');
+  var content = document.getElementById('content');
 
-    expandBtn.addEventListener('click', function() {
-      content.style.display = 'block';
-      expandBtn.style.display = 'none';
-      hideBtn.style.display = 'block';
-    });
-
-    hideBtn.addEventListener('click', function() {
-      content.style.display = 'none';
-      hideBtn.style.display = 'none';
-      expandBtn.style.display = 'block';
-    });
+  expandBtn.addEventListener('click', function() {
+    content.classList.add('expanded');
+    expandBtn.style.display = 'none';
+    hideBtn.style.display = 'block';
   });
+
+  hideBtn.addEventListener('click', function() {
+    content.classList.remove('expanded');
+    hideBtn.style.display = 'none';
+    expandBtn.style.display = 'block';
+  });
+});
 </script>
   
   {% schema %}
