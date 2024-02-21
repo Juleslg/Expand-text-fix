@@ -84,13 +84,13 @@
                     {{- block.settings.content -}}
                   </div>
                   <div id="expandable-section">
-                <div id="expand-btn" style="cursor: pointer;">Expand</div>
-                <div id="content" style="display: none;">
-                  long text
-                  <p>This is the content that was hidden but now is shown.</p>
-                  <div id="hide-btn" style="cursor: pointer; display: none;">Hide</div>
-                </div>
-              </div>
+  <div id="expand-btn" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
+  <div id="content" style="display: none;">
+    <!-- Your long text/content goes here -->
+    <p>This is the content that was hidden but now is shown.</p>
+    <div id="hide-btn" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
+  </div>
+</div>
                 {%- endif -%}
   
               {%- when 'page' -%}
@@ -148,7 +148,7 @@
   
   {% schema %}
   {
-    "name": "Image Text Layout",
+    "name": "Image Text Layout New",
     "class": "shopify-section--image-with-text",
     "tag": "section",
     "max_blocks": 6,
@@ -156,6 +156,18 @@
       "groups": ["header", "custom.overlay"]
     },
     "settings": [
+        {
+      "type": "text",
+      "id": "expand_text",
+      "label": "Expand Button Text",
+      "default": "Expand"
+    },
+    {
+      "type": "text",
+      "id": "hide_text",
+      "label": "Hide Button Text",
+      "default": "Hide"
+    },
       {
         "type": "checkbox",
         "id": "separate_section_with_border",
