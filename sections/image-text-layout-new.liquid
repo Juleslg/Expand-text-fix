@@ -32,6 +32,19 @@
       padding-right: {{section.settings.padding_sides_mobile}}px; /* Adjust mobile right padding */
     }
   }
+  #content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s linear;
+  height: 0;
+  overflow: hidden;
+}
+
+#content.visible {
+  opacity: 1;
+  visibility: visible;
+  height: auto; /* Adjust this as necessary */
+}
   
     </style>
   
@@ -129,22 +142,22 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var expandBtn = document.getElementById('expand-btn');
-    var hideBtn = document.getElementById('hide-btn');
-    var content = document.getElementById('content');
+  var expandBtn = document.getElementById('expand-btn');
+  var hideBtn = document.getElementById('hide-btn');
+  var content = document.getElementById('content');
 
-    expandBtn.addEventListener('click', function() {
-      content.style.display = 'block';
-      expandBtn.style.display = 'none';
-      hideBtn.style.display = 'block';
-    });
-
-    hideBtn.addEventListener('click', function() {
-      content.style.display = 'none';
-      hideBtn.style.display = 'none';
-      expandBtn.style.display = 'block';
-    });
+  expandBtn.addEventListener('click', function() {
+    content.classList.add('show');
+    expandBtn.style.display = 'none';
+    hideBtn.style.display = 'block';
   });
+
+  hideBtn.addEventListener('click', function() {
+    content.classList.remove('show');
+    hideBtn.style.display = 'none';
+    expandBtn.style.display = 'block';
+  });
+});
 </script>
   
   {% schema %}
