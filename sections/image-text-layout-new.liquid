@@ -35,13 +35,12 @@
     .transition-container {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.5s ease-out; /* Adjust timing as needed */
+  transition: max-height 0.5s ease-out;
 }
 
-/* Class that gets added when the section is expanded */
 .expanded {
-  max-height: 1000px; /* Set to a value that will accommodate the content size or use 'none' */
-  transition: max-height 0.5s ease-in; /* Adjust timing as needed */
+  max-height: 1000px; /* Adjust based on the actual height of your content */
+  transition: max-height 0.5s ease-in;
 }
   }
   
@@ -145,12 +144,14 @@
   var content = document.getElementById('content');
 
   expandBtn.addEventListener('click', function() {
+    // Simply add 'expanded' class to show content
     content.classList.add('expanded');
     expandBtn.style.display = 'none';
     hideBtn.style.display = 'block';
   });
 
   hideBtn.addEventListener('click', function() {
+    // Remove 'expanded' class to hide content
     content.classList.remove('expanded');
     hideBtn.style.display = 'none';
     expandBtn.style.display = 'block';
