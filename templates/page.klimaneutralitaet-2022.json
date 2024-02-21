@@ -11,50 +11,44 @@
         "page_width": "xs"
       }
     },
-    "rich_text2_1_3MaKMa": {
-      "type": "rich-text2_1",
+    "image_text_layout_new_UYUThe": {
+      "type": "image-text-layout-new",
       "blocks": {
-        "subheading_HHwMkQ": {
+        "subheading_G8CAQy": {
           "type": "subheading",
           "settings": {
             "text": "Subheading"
           }
         },
-        "heading_6maXFf": {
+        "heading_gyEygn": {
           "type": "heading",
           "settings": {
-            "text": "Heading",
+            "text": "Image text Layout",
             "heading_tag": "h1"
           }
         },
-        "richtext_GYDJhr": {
+        "richtext_tMy7Hi": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Always visible content here<\/p>",
-            "content-expand": "<p>expandable content here<\/p>"
-          }
-        },
-        "image_FCXeJF": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/C-02-SET-DINE-LBLUE-003-03-web_c425a5a7-8135-4658-a250-3b81aedaf761.jpg",
-            "width_mode": "custom",
-            "max_width": 340,
-            "mobile_max_width": 240
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
           }
         }
       },
       "block_order": [
-        "subheading_HHwMkQ",
-        "heading_6maXFf",
-        "richtext_GYDJhr",
-        "image_FCXeJF"
+        "subheading_G8CAQy",
+        "heading_gyEygn",
+        "richtext_tMy7Hi"
       ],
       "settings": {
         "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "image-with-text",
+        "text_agline": "left",
         "content_width": "sm",
-        "text_position": "center",
-        "remove_vertical_spacing": false
+        "padding_sides_desktop": 0,
+        "padding_sides_mobile": 0,
+        "gap_img_text": 0,
+        "remove_vertical_spacing": true
       }
     },
     "rich_text_2_0_tqcaaA": {
@@ -583,7 +577,7 @@
   },
   "order": [
     "main",
-    "rich_text2_1_3MaKMa",
+    "image_text_layout_new_UYUThe",
     "rich_text_2_0_tqcaaA",
     "rich_text_2_0_c9LLY7",
     "image_text_layout_fddTQe",
