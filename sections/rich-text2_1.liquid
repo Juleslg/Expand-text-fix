@@ -67,6 +67,7 @@
 
           {%- when 'image' -%}
             {%- if block.settings.image != blank -%}
+              <div class="image-container">
               <div {{ block.shopify_attributes }}>
                 {%- capture image_style_attribute -%}{% if section.settings.text_position == 'center' %}margin-inline: auto;{% elsif section.settings.text_position == 'end' %}margin-inline-start: auto;{% endif %}{%- endcapture -%}
 
@@ -80,6 +81,7 @@
                 {%- endif -%}
 
                 {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: image_sizes_attribute, widths: image_widths, class: 'constrained-image', style: image_style_attribute -}}
+              </div>
               </div>
             {%- endif -%}
 
