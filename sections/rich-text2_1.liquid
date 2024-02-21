@@ -1,5 +1,6 @@
 {%- if section.blocks.size > 0 -%}
 <div class="{% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    
   <div class="container container--{{ section.settings.content_width }}">
     <div class="prose text-{{ section.settings.text_position }}">
       {%- assign is_inside_button_group_context = false -%}
@@ -137,6 +138,11 @@ document.querySelectorAll('.expandButton{{ section.id }}').forEach(function(butt
 });
 </script>
 <style>
+
+.container--{{ section.settings.content_width }}{
+  display: flex;
+}
+
 .content-expand{{ section.id }}{
   display: none;
 }
