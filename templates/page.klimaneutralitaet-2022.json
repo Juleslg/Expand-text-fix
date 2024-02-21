@@ -39,8 +39,8 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/C-02-SET-DINE-LBLUE-003-03-web_c425a5a7-8135-4658-a250-3b81aedaf761.jpg",
             "width_mode": "custom",
-            "max_width": 600,
-            "mobile_max_width": 400
+            "max_width": 340,
+            "mobile_max_width": 240
           }
         }
       },
