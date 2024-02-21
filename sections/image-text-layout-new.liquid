@@ -65,14 +65,7 @@
 
   
         <div class="prose text-center sm:text-start"  style=" padding-top: {{section.settings.gap_img_text}}px;">
-            <div id="expandable-section">
-                <div id="expand-btn" style="cursor: pointer;">Expand</div>
-                <div id="content" style="display: none;">
-                  long text
-                  <p>This is the content that was hidden but now is shown.</p>
-                  <div id="hide-btn" style="cursor: pointer; display: none;">Hide</div>
-                </div>
-              </div>
+            
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'subheading' -%}
@@ -90,6 +83,14 @@
                   <div {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">
                     {{- block.settings.content -}}
                   </div>
+                  <div id="expandable-section">
+                <div id="expand-btn" style="cursor: pointer;">Expand</div>
+                <div id="content" style="display: none;">
+                  long text
+                  <p>This is the content that was hidden but now is shown.</p>
+                  <div id="hide-btn" style="cursor: pointer; display: none;">Hide</div>
+                </div>
+              </div>
                 {%- endif -%}
   
               {%- when 'page' -%}
