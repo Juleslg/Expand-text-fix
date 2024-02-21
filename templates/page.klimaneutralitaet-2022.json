@@ -40,6 +40,8 @@
         "richtext_tMy7Hi"
       ],
       "settings": {
+        "expand_text": "Show",
+        "hide_text": "Hide",
         "separate_section_with_border": true,
         "reveal_on_scroll": true,
         "image_position": "image-with-text",
