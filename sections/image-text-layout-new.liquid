@@ -56,6 +56,25 @@
   visibility: visible;
   transition: visibility 0s linear 0s, opacity 0.5s linear;
 }
+#content::-webkit-scrollbar {
+  width: 12px; /* or any width you prefer */
+}
+
+#content::-webkit-scrollbar-track {
+  background: transparent; /* makes the track invisible */
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: #888; /* thumb color */
+  border-radius: 6px; /* rounded corners */
+  border: 3px solid transparent; /* makes the thumb "float" with invisible borders */
+  background-clip: content-box; /* ensures the background (thumb) is within the border area */
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: #555; /* thumb color on hover */
+}
+
   }
   
     </style>
