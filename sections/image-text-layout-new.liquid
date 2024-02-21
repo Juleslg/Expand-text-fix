@@ -97,7 +97,7 @@
                   </div>
                   <div id="expandable-section">
   <div id="expand-btn" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
-  <div id="content" style="display: none;">
+  <div id="content" class="transition-container" style="display: none;">
     <!-- Your long text/content goes here -->
     <p>This is the content that was hidden but now is shown.</p>
     <div id="hide-btn" style="cursor: pointer; display: none;">{{ section.settings.hide_text | escape }}</div>
