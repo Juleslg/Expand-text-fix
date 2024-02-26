@@ -137,11 +137,11 @@
                     {{- block.settings.content -}}
                   </div>
                   <div id="expandable-section">
-  <div id="expand-btn" class="button-visible" style="cursor: pointer;">{{ section.settings.expand_text | escape }}</div>
+  <div id="expand-btn" class="button-visible" style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.expand_text | escape }}</div>
   <div id="content" class="transition-container">
     <!-- Your long text/content goes here -->
-    <p>{{ section.settings.long_text_content | newline_to_br }}</p>
-    <div id="hide-btn" class="button-transition" style="cursor: pointer">{{ section.settings.hide_text | escape }}</div>
+    <p style="text-align:{{section.settings.text_agline}};"  >{{ section.settings.long_text_content | newline_to_br }}</p>
+    <div id="hide-btn" class="button-transition" style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.hide_text | escape }}</div>
   </div>
 </div>
                 {%- endif -%}
