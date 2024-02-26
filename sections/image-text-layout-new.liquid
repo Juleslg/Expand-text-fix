@@ -18,6 +18,9 @@
           display: flex;
           justify-content: center;
       }
+
+      #shopify-section-{{ section.id }} .prose {
+    max-width: {{ section.settings.content_width | append: 'rem' }};
      
 
     .transition-container {
@@ -301,25 +304,16 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
       },
       {
-        "type": "select",
-        "id": "content_width",
-        "label": "t:global.sizes.content_width",
-        "options": [
-          {
-            "value": "sm",
-            "label": "t:global.sizes.small"
-          },
-          {
-            "value": "md",
-            "label": "t:global.sizes.medium"
-          },
-          {
-            "value": "lg",
-            "label": "t:global.sizes.large"
-          }
-        ],
-        "default": "sm"
-      },
+  "type": "range",
+  "id": "content_width",
+  "label": "Content Width (in rem)",
+  "min": 15,
+  "max": 100,
+  "step": 1,
+  "unit": "rem",
+  "default": 15,
+  "info": "Adjust the content width in rem units"
+},
       {
             "type": "range",
             "id": "padding_sides_desktop",
