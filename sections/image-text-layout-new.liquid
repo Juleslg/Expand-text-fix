@@ -34,16 +34,21 @@
 }
 
 .button-transition {
+  height: 0;
   opacity: 0;
   visibility: hidden;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  overflow: hidden;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear, height 0.5s linear;
 }
 
 .button-visible {
+  height: auto; /* Adjust this based on the button's height */
   opacity: 1;
   visibility: visible;
-  transition: visibility 0s linear 0s, opacity 0.5s linear;
+  transition: visibility 0s linear 0s, opacity 0.5s linear, height 0.5s linear;
 }
+
+
 #content::-webkit-scrollbar {
   width: 12px; /* or any width you prefer */
 }
@@ -63,7 +68,7 @@
   background: #555; /* thumb color on hover */
 } 
 
-  }
+  
   
     </style>
   
@@ -163,27 +168,30 @@ document.addEventListener('DOMContentLoaded', function() {
   var expandBtn = document.getElementById('expand-btn');
   var hideBtn = document.getElementById('hide-btn');
   var content = document.getElementById('content');
+  // Calculate the visible height of the button. Assume 40px as an example or get it dynamically
+  var buttonHeight = '40px'; // You might need to adjust this based on your actual button height or calculate it dynamically
 
   expandBtn.addEventListener('click', function() {
     content.classList.add('expanded');
-    expandBtn.classList.remove('button-visible');
+    expandBtn.style.height = '0';
     setTimeout(function() {
-      expandBtn.classList.add('button-transition');
+      expandBtn.classList.remove('button-visible');
       hideBtn.classList.add('button-visible');
-      hideBtn.style.display = 'block'; // Ensure it's displayed for visibility
+      hideBtn.style.height = buttonHeight; // Set the height back when showing the button
     }, 0); // Immediately start the transition
   });
 
   hideBtn.addEventListener('click', function() {
     content.classList.remove('expanded');
-    hideBtn.classList.remove('button-visible');
+    hideBtn.style.height = '0';
     setTimeout(function() {
-      hideBtn.classList.add('button-transition');
+      hideBtn.classList.remove('button-visible');
       expandBtn.classList.add('button-visible');
-      //hideBtn.style.display = 'none'; // Hide it after transition
+      expandBtn.style.height = buttonHeight; // Reset the height for the expand button
     }, 200); // This timeout should match the opacity transition duration
   });
 });
+
 
 
 
