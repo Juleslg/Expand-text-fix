@@ -76,6 +76,7 @@
 } 
 
 #expandable-section {
+  transition: margin-top 0.5s ease-in-out;
   margin-top: 16px;
 }
 
@@ -179,19 +180,25 @@ document.addEventListener('DOMContentLoaded', function() {
   var expandBtn = document.getElementById('expand-btn');
   var hideBtn = document.getElementById('hide-btn');
   var content = document.getElementById('content');
+  var expandableSection = document.getElementById('expandable-section');
 
   expandBtn.addEventListener('click', function() {
     content.classList.add('expanded');
     expandBtn.classList.replace('button-visible', 'button-transition');
     hideBtn.classList.replace('button-transition', 'button-visible');
+    // Set the margin-top of #expandable-section to 0px when expanded
+    expandableSection.style.marginTop = '0px';
   });
 
   hideBtn.addEventListener('click', function() {
     content.classList.remove('expanded');
     hideBtn.classList.replace('button-visible', 'button-transition');
     expandBtn.classList.replace('button-transition', 'button-visible');
+    // Set the margin-top of #expandable-section to 16px when collapsed
+    expandableSection.style.marginTop = '16px';
   });
 });
+
 
 
 
