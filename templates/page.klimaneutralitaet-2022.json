@@ -47,7 +47,7 @@
         "image": "shopify:\/\/shop_images\/Kopie_von_onomao-Lissabon-Tag-2-524_1_78b1af2a-1fbd-47d1-b579-3c090cb6c698.jpg",
         "mobile_image": "shopify:\/\/shop_images\/Kopie_von_onomao-Lissabon-Tag-2-524_1_78b1af2a-1fbd-47d1-b579-3c090cb6c698.jpg",
         "reveal_on_scroll": true,
-        "image_position": "image-with-text",
+        "image_position": "image-with-text image-with-text--reverse",
         "text_agline": "left",
         "content_width": "sm",
         "padding_sides_desktop": 0,
