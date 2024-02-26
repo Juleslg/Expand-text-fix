@@ -49,10 +49,10 @@
         "reveal_on_scroll": true,
         "image_position": "image-with-text image-with-text--reverse",
         "text_agline": "right",
-        "content_width": "sm",
+        "content_width": 25,
         "padding_sides_desktop": 0,
         "padding_sides_mobile": 0,
-        "gap_img_text": 0,
+        "gap_between_image_text": 1,
         "remove_vertical_spacing": true
       }
     },
