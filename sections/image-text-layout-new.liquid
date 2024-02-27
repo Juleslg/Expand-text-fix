@@ -1,178 +1,246 @@
 {%- if section.settings.image != blank or section.blocks.size > 0 -%}
-    {%- comment -%}
+  {%- comment -%}
     ------------------------------------------------------------------------------------------------------------------------
     CSS
     ------------------------------------------------------------------------------------------------------------------------
-    {%- endcomment -%}
-  
-    <style>
-    
-      #shopify-section-{{ section.id }} .prose {
-    max-width: {{ section.settings.content_width | append: 'rem' }};
-  }
-     
+  {%- endcomment -%}
+
+  <style>
+
+    #shopify-section-{{ section.id }} .prose {
+      max-width: {{ section.settings.content_width | append: 'rem' }};
+    }
+
 
     .transition-container {
-  overflow: hidden;
-  max-height: 0 ;
-  transition: max-height 1s ease-out;
-  
-}
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 1s ease-out;
+
+    }
 
 
+    .expanded {
+      max-height: 188px;
+      /* Adjust based on the actual height of your content */
+      transition: max-height 2s ease-in;
+      overflow-y: auto;
 
-.expanded {
-  max-height: 188px; /* Adjust based on the actual height of your content */
-  transition: max-height 2s ease-in;
-  overflow-y: auto;
+    }
 
-}
+    .button-transition,
+    .button-visible {
+      overflow: hidden;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 1s linear
+      , max-height 0.5s linear;
+    }
 
-.button-transition, .button-visible {
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 1s linear, max-height 0.5s linear;
-}
+    .button-transition {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
 
-.button-transition {
-  max-height: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.button-visible {
-  max-height: 40px; /* or a sufficient maximum height */
-  opacity: 1;
-  visibility: visible;
-}
+    .button-visible {
+      max-height: 40px;
+      /* or a sufficient maximum height */
+      opacity: 1;
+      visibility: visible;
+    }
 
 
-#content::-webkit-scrollbar {
-  width: 12px; /* or any width you prefer */
-}
+    #content::-webkit-scrollbar {
+      width: 12px;
+      /* or any width you prefer */
+    }
 
-#content::-webkit-scrollbar-track {
-  background: transparent; /* makes the track invisible */
-}
+    #content::-webkit-scrollbar-track {
+      background: transparent;
+      /* makes the track invisible */
+    }
 
-#content::-webkit-scrollbar-thumb {
-  background: #888; /* thumb color */
-  border-radius: 6px; /* rounded corners */
-  border: 3px solid transparent; /* makes the thumb "float" with invisible borders */
-  background-clip: content-box; /* ensures the background (thumb) is within the border area */
-}
+    #content::-webkit-scrollbar-thumb {
+      background: #888;
+      /* thumb color */
+      border-radius: 6px;
+      /* rounded corners */
+      border: 3px solid transparent;
+      /* makes the thumb "float" with invisible borders */
+      background-clip: content-box;
+      /* ensures the background (thumb) is within the border area */
+    }
 
-#content::-webkit-scrollbar-thumb:hover {
-  background: #555; /* thumb color on hover */
-} 
+    #content::-webkit-scrollbar-thumb:hover {
+      background: #555;
+      /* thumb color on hover */
+    }
 
-#expandable-section {
-  transition: margin-top 0.5s ease-in-out;
-  
-}
+    #expandable-section {
+      transition: margin-top 0.5s ease-in-out;
 
-.image-with-text {
-    gap: {{ section.settings.gap_between_image_text }}rem;
-  }
+    }
 
-  
-  
-    </style>
-  
-    {%- comment -%}
+    .image-with-text {
+      gap: {{ section.settings.gap_between_image_text }}rem;
+    }
+
+
+  </style>
+
+  {%- comment -%}
     ------------------------------------------------------------------------------------------------------------------------
     LIQUID
     ------------------------------------------------------------------------------------------------------------------------
-    {%- endcomment -%}
-    
-  
-    <div class="{% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} {% if section.settings.separate_section_with_border %}bordered-section{% endif %} padding_sides{{ section.id }}">
-      <image-with-text class="{{section.settings.image_position}} ">
-        {%- if section.settings.image != blank -%}
-  <picture class="center_img"   >
-            {%- assign sizes = '(max-width: 699px) 100vw, 50vw' -%}
-  
-            {%- if section.settings.mobile_image != blank -%}
-              <source
-                  media="(max-width: 699px)"
-                  srcset="{{ section.settings.mobile_image | image_url: width: '400x' }} 400w, {{ section.settings.mobile_image | image_url: width: '600x' }} 600w, {{ section.settings.mobile_image | image_url: width: '800x' }} 800w, {{ section.settings.mobile_image | image_url: width: '1000x' }} 1000w"
-                  width="{{ section.settings.mobile_image.width }}"
-                  height="{{ section.settings.mobile_image.height }}"
-              >
-            {%- endif -%}
-  
-            {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', reveal-on-scroll: section.settings.reveal_on_scroll -}}
-          </picture>
-        {%- else -%}
-          {{- 'lifestyle-1' | placeholder_svg_tag: 'placeholder' -}}
-        {%- endif -%}
+  {%- endcomment -%}
 
-  
-        <div class="prose text-center sm:text-start"  style=" padding-top: {{section.settings.gap_img_text}}px;">
-            
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'subheading' -%}
-                {%- if block.settings.text != blank -%}
-                  <h3 class="h6" {{ block.shopify_attributes }} style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text }}</h3>
-                {%- endif -%}
-  
-              {%- when 'heading' -%}
-                {%- if block.settings.text != blank -%}
-                  <h2 class="{{ block.settings.heading_tag }}" {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text }}</h2>
-                {%- endif -%}
-  
-              {%- when 'richtext' -%}
-                {%- if block.settings.content != blank -%}
-                  <div {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">
-                    {{- block.settings.content -}}
-                  </div>
-                  <div id="expandable-section">
-  <div id="expand-btn" class="button-visible" style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.expand_text | escape }}</div>
-  <div id="content" class="transition-container">
-    <!-- Your long text/content goes here -->
-    <p style="text-align:{{section.settings.text_agline}};"  >{{ section.settings.long_text_content | newline_to_br }}</p>
-    <div id="hide-btn" class="button-transition" style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.hide_text | escape }}</div>
-  </div>
-</div>
-                {%- endif -%}
-  
-              {%- when 'page' -%}
-                {%- if block.settings.page.content != blank -%}
-                  <div {{ block.shopify_attributes }}>
-                    {{- block.settings.page.content -}}
-                  </div>
-                {%- endif -%}
-  
-              {%- when 'liquid' -%}
-                {%- if block.settings.liquid != blank -%}
-                  <div {{ block.shopify_attributes }}>
-                    {{- block.settings.liquid -}}
-                  </div>
-                {%- endif -%}
-  
-              {%- when 'link' -%}
-  
-                <div  {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">
-                <a {% if block.settings.url %}href="{{ block.settings.url }}"{% endif %} class="link" {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text | escape }}</a>
-  
+
+  <div class="{% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} {% if section.settings.separate_section_with_border %}bordered-section{% endif %} padding_sides{{ section.id }}">
+    <image-with-text class="{{section.settings.image_position}} ">
+      {%- if section.settings.image != blank -%}
+        <picture class="center_img">
+          {%- assign sizes = '(max-width: 699px) 100vw, 50vw' -%}
+
+          {%- if section.settings.mobile_image != blank -%}
+            <source
+              media="(max-width: 699px)"
+              srcset="{{ section.settings.mobile_image | image_url: width: '400x' }} 400w, {{ section.settings.mobile_image | image_url: width: '600x' }} 600w, {{ section.settings.mobile_image | image_url: width: '800x' }} 800w, {{ section.settings.mobile_image | image_url: width: '1000x' }} 1000w"
+              width="{{ section.settings.mobile_image.width }}"
+              height="{{ section.settings.mobile_image.height }}">
+          {%- endif -%}
+
+          {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', reveal-on-scroll: section.settings.reveal_on_scroll -}}
+        </picture>
+      {%- else -%}
+        {{- 'lifestyle-1' | placeholder_svg_tag: 'placeholder' -}}
+      {%- endif -%}
+
+
+      <div class="prose text-center sm:text-start" style=" padding-top: {{section.settings.gap_img_text}}px;">
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'subheading' -%}
+              {%- if block.settings.text != blank -%}
+                <h3
+                  class="h6"
+                  {{ block.shopify_attributes }}
+                  style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text }}</h3>
+              {%- endif -%}
+
+            {%- when 'heading' -%}
+              {%- if block.settings.text != blank -%}
+                <h2
+                  class="{{ block.settings.heading_tag }}"
+                  {{ block.shopify_attributes }}
+                  style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text }}</h2>
+              {%- endif -%}
+
+            {%- when 'richtext' -%}
+              {%- if block.settings.content != blank -%}
+                <div {{ block.shopify_attributes }} style="text-align:{{section.settings.text_agline}} ;">
+                  {{- block.settings.content -}}
                 </div>
-              {%- when 'button' -%}
-                {%- if block.settings.text != blank -%}
-                  <div {{ block.shopify_attributes }}  style="text-align:{{section.settings.text_agline}} ;">
-                    {% render 'button', content: block.settings.text, href: block.settings.url, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
+                <div id="expandable-section">
+                  <div
+                    id="expand-btn"
+                    class="button-visible"
+                    style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.expand_text | escape }}</div>
+                  <div id="content" class="transition-container">
+                    <!-- Your long text/content goes here -->
+                    <p style="text-align:{{section.settings.text_agline}};">{{ section.settings.long_text_content | newline_to_br }}</p>
+                    <div
+                      id="hide-btn"
+                      class="button-transition"
+                      style="cursor: pointer; text-align:{{section.settings.text_agline}};">{{ section.settings.hide_text | escape }}</div>
                   </div>
-                {%- endif -%}
-            {%- endcase -%}
-          {%- endfor -%}
-        </div>
-      </image-with-text>
-    </div>
-  {%- endif -%}
+                </div>
+              {%- endif -%}
 
-  <script>
+            {%- when 'page' -%}
+              {%- if block.settings.page.content != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {{- block.settings.page.content -}}
+                </div>
+              {%- endif -%}
+
+            {%- when 'liquid' -%}
+              {%- if block.settings.liquid != blank -%}
+                <div {{ block.shopify_attributes }}>
+                  {{- block.settings.liquid -}}
+                </div>
+              {%- endif -%}
+
+            {%- when 'link' -%}
+
+              <div {{ block.shopify_attributes }} style="text-align:{{section.settings.text_agline}} ;">
+                <a
+                  {% if block.settings.url %}
+                  href="{{ block.settings.url }}"
+                  {% endif %}
+                  class="link"
+                  {{ block.shopify_attributes }}
+                  style="text-align:{{section.settings.text_agline}} ;">{{ block.settings.text | escape }}</a>
+
+              </div>
+            {%- when 'button' -%}
+              {%- if block.settings.text != blank -%}
+                <div {{ block.shopify_attributes }} style="text-align:{{section.settings.text_agline}} ;">
+                  {% render 'button'
+                    , content: block.settings.text
+                    , href: block.settings.url
+                    , style: block.settings.style
+                    , background: block.settings.background
+                    , text_color: block.settings.text_color
+                    , block: block %}
+                </div>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </image-with-text>
+  </div>
+{%- endif -%}
+
+<script>
+
 document.addEventListener('DOMContentLoaded', function() {
+  var translations = {
+    'en': {
+      'open': 'learn more',
+      'close': 'show less'
+    },
+    'de': {
+      'open': 'mehr erfahren',
+      'close': 'weniger anzeigen'
+    },
+    'fr': {
+      'open': 'en savoir plus',
+      'close': 'afficher moins'
+    }
+  };
+
+  function getCurrentLang() {
+    return document.documentElement.lang || 'en'; // Default to 'en' if lang attribute is not set
+  }
+
+  var currentLang = getCurrentLang();
+  var expandBtn = document.getElementById('expand-btn');
+  var hideBtn = document.getElementById('hide-btn');
+
+  // Check if the current language translations exist, otherwise default to English
+  var langTranslations = translations[currentLang] ? translations[currentLang] : translations['en'];
+
+  // Set the button texts based on the current language
+  if (expandBtn && hideBtn) {
+    expandBtn.textContent = langTranslations.open;
+    hideBtn.textContent = langTranslations.close;
+  }
+  });
+
+
+  document.addEventListener('DOMContentLoaded', function() {
   var expandBtn = document.getElementById('expand-btn');
   var hideBtn = document.getElementById('hide-btn');
   var content = document.getElementById('content');
@@ -193,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set the margin-top of #expandable-section to 16px when collapsed
     expandableSection.style.marginTop = '16px';
   });
-});
+  });
 
 
 
@@ -201,8 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 </script>
-  
-  {% schema %}
+
+{% schema %}
   {
     "name": "Image Text Layout New",
     "class": "shopify-section--image-with-text",
@@ -212,49 +280,45 @@ document.addEventListener('DOMContentLoaded', function() {
       "groups": ["header", "custom.overlay"]
     },
     "settings": [
-        {
-      "type": "text",
-      "id": "expand_text",
-      "label": "Expand Button Text",
-      "default": "Expand"
-    },
-    {
-      "type": "text",
-      "id": "hide_text",
-      "label": "Hide Button Text",
-      "default": "Hide"
-    },
-    {
-      "type": "textarea",
-      "id": "long_text_content",
-      "label": "Long Text Content",
-      "default": "This is the content that was hidden but now is shown."
-    },
+      {
+        "type": "text",
+        "id": "expand_text",
+        "label": "Expand Button Text",
+        "default": "Expand"
+      },
+      {
+        "type": "text",
+        "id": "hide_text",
+        "label": "Hide Button Text",
+        "default": "Hide"
+      },
+      {
+        "type": "textarea",
+        "id": "long_text_content",
+        "label": "Long Text Content",
+        "default": "This is the content that was hidden but now is shown."
+      },
       {
         "type": "checkbox",
         "id": "separate_section_with_border",
         "label": "t:global.section.separate_section_with_border",
         "default": true
-      },
-      {
+      }, {
         "type": "image_picker",
         "id": "image",
         "label": "t:global.image.image",
         "info": "t:sections.image_with_text.image_size_recommendation"
-      },
-      {
+      }, {
         "type": "image_picker",
         "id": "mobile_image",
         "label": "t:global.image.mobile_image",
         "info": "t:sections.image_with_text.mobile_image_size_recommendation"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "reveal_on_scroll",
         "label": "t:global.animation.reveal_image_on_scroll",
         "default": true
-      },
-      {
+      }, {
         "type": "select",
         "id": "image_position",
         "label": "t:sections.image_with_text.image_position",
@@ -262,18 +326,15 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             "value": "image-with-text",
             "label": "t:global.position.left"
-          },
-           {
+          }, {
             "value": "image-with-text--center",
             "label": "center"
-          },
-          {
+          }, {
             "value": "image-with-text image-with-text--reverse",
             "label": "t:global.position.right"
           }
         ]
-      },
-      {
+      }, {
         "type": "select",
         "id": "text_agline",
         "label": "text & Button aglin",
@@ -281,60 +342,53 @@ document.addEventListener('DOMContentLoaded', function() {
           {
             "value": "left",
             "label": "left"
-          },
-           {
+          }, {
             "value": "center",
             "label": "center"
-          },
-          {
+          }, {
             "value": "right",
             "label": "right"
           }
         ]
-      },
-      {
-  "type": "range",
-  "id": "content_width",
-  "label": "Content Width (in rem)",
-  "min": 15,
-  "max": 100,
-  "step": 1,
-  "unit": "rem",
-  "default": 15,
-  "info": "Adjust the content width in rem units"
-},
-      {
-            "type": "range",
-            "id": "padding_sides_desktop",
-            "min": 0,
-            "max": 600,
-            "step": 10,
-            "unit": "px",
-            "label": "Padding on the sides Desktop view ",
-            "default": 0
-          },
-          {
-            "type": "range",
-            "id": "padding_sides_mobile",
-            "min": 0,
-            "max": 120,
-            "step": 2,
-            "unit": "px",
-            "label": "Padding on the sides mobile view ",
-            "default": 0
-          },
-      {
+      }, {
         "type": "range",
-    "id": "gap_between_image_text",
-    "label": "Gap between image and text (in rem)",
-    "min": 0,
-    "max": 10,
-    "step": 0.1,
-    "unit": "rem",
-    "default": 1,
-    "info": "Adjust the gap between the image and the text in rem units"
-          },
-      {
+        "id": "content_width",
+        "label": "Content Width (in rem)",
+        "min": 15,
+        "max": 100,
+        "step": 1,
+        "unit": "rem",
+        "default": 15,
+        "info": "Adjust the content width in rem units"
+      }, {
+        "type": "range",
+        "id": "padding_sides_desktop",
+        "min": 0,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Padding on the sides Desktop view ",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding_sides_mobile",
+        "min": 0,
+        "max": 120,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding on the sides mobile view ",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "gap_between_image_text",
+        "label": "Gap between image and text (in rem)",
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "unit": "rem",
+        "default": 1,
+        "info": "Adjust the gap between the image and the text in rem units"
+      }, {
         "type": "checkbox",
         "id": "remove_vertical_spacing",
         "label": "t:global.spacing.remove_vertical_spacing",
@@ -363,8 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
             "id": "text",
             "label": "t:global.text.text",
             "default": "Heading"
-          },
-          {
+          }, {
             "type": "select",
             "id": "heading_tag",
             "label": "t:global.text.style",
@@ -384,12 +437,10 @@ document.addEventListener('DOMContentLoaded', function() {
               {
                 "value": "h4",
                 "label": "H4"
-              },
-              {
+              }, {
                 "value": "h5",
                 "label": "H5"
-              },
-              {
+              }, {
                 "value": "h6",
                 "label": "H6"
               }
@@ -414,14 +465,13 @@ document.addEventListener('DOMContentLoaded', function() {
         "type": "page",
         "name": "t:sections.image_with_text.blocks.page.name",
         "settings": [
-          {	
-            "type": "page",	
-            "id": "page",	
-            "label": "Page"	
-          }	
-        ]	
-      },	
-      {
+          {
+            "type": "page",
+            "id": "page",
+            "label": "Page"
+          }
+        ]
+      }, {
         "type": "liquid",
         "name": "t:sections.image_with_text.blocks.liquid.name",
         "settings": [
@@ -429,69 +479,64 @@ document.addEventListener('DOMContentLoaded', function() {
             "type": "liquid",
             "id": "liquid",
             "label": "t:global.code.liquid",
-            "default": "<p>Write custom Liquid code to include widget or dynamic code.</p>"	
-          }	
-        ]	
-      },	
-      {	
+            "default": "<p>Write custom Liquid code to include widget or dynamic code.</p>"
+          }
+        ]
+      }, {
         "type": "link",
         "name": "t:sections.image_with_text.blocks.link.name",
         "settings": [
-          {	
-            "type": "text",	
-            "id": "text",	
+          {
+            "type": "text",
+            "id": "text",
             "label": "t:global.text.text",
-            "default": "Text"	
-          },	
-          {	
-            "type": "url",	
-            "id": "url",	
+            "default": "Text"
+          }, {
+            "type": "url",
+            "id": "url",
             "label": "t:global.text.link"
           }
         ]
-      },
-      {
+      }, {
         "type": "button",
         "name": "t:sections.image_with_text.blocks.button.name",
         "settings": [
-          {	
-            "type": "select",	
-            "id": "style",	
+          {
+            "type": "select",
+            "id": "style",
             "label": "t:global.text.style",
-            "options": [	
-              {	
-                "value": "outline",	
+            "options": [
+              {
+                "value": "outline",
                 "label": "t:global.text.button_style_options.outline"
-              },	
-              {	
+              }, {
                 "value": "solid",
                 "label": "t:global.text.button_style_options.solid"
-              }	
-            ],	
+              }
+            ],
             "default": "solid"
-          },	
-          {	
-            "type": "text",	
-            "id": "text",	
+          },
+          {
+            "type": "text",
+            "id": "text",
             "label": "t:global.text.text",
-            "default": "Button text"	
-          },	
-          {	
-            "type": "url",	
-            "id": "url",	
+            "default": "Button text"
+          },
+          {
+            "type": "url",
+            "id": "url",
             "label": "t:global.text.link"
-          },	
-          {	
-            "type": "color",	
-            "id": "background",	
+          },
+          {
+            "type": "color",
+            "id": "background",
             "label": "t:global.colors.background"
-          },	
-          {	
-            "type": "color",	
-            "id": "text_color",	
+          }, {
+            "type": "color",
+            "id": "text_color",
             "label": "t:global.text.text"
-          }	
-        ]	
+          }
+        ]
       }
     ],
     "presets": [
@@ -503,18 +548,16 @@ document.addEventListener('DOMContentLoaded', function() {
             "settings": {
               "text": "Subheading"
             }
-          },
-          {
+          }, {
             "type": "heading",
             "settings": {
               "text": "Image text Layout"
             }
-          },
-          {
+          }, {
             "type": "richtext"
           }
         ]
       }
     ]
   }
-  {% endschema %}
+{% endschema %}
